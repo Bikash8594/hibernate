@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="com.nt.entity.Project"   table="PROJECT">
+        <id name="projId"  column="PROJID"  type="int"  length="10">
+           <generator class="increment"/>
+        </id>
+       <property name="projName"  column="PROJNAME" type="string" length="20"/>
+       <property name="domain"  column="DOMAIN" type="string" length="20"/>
+       <property name="company"  column="COMPANY"  type="string"  length="20"/>
+       <property name="teamSize"  column="TEAMSIZE"  type="int"/>
+  </class>
+    <sql-query name="CALL_FUNCTION"  callable="true">
+       <return-scalar column="PROJID" type="int"/>
+       <return-scalar column="PROJNAME"  type="string"/>
+       <return-scalar column="TEAMSIZE"  type="int"/>
+        { ?= call  FX_FETCH_PROJECTS_BY_DOMAIN (?) }
+       
+    </sql-query>
+</hibernate-mapping>
+
+<!-- CREATE OR REPLACE FUNCTION FX_FETCH_PROJECTS_BY_DOMAIN 
+(
+  DOMAININITCHARS IN VARCHAR2 
+) RETURN SYS_REFCURSOR AS 
+   details SYS_REFCURSOR;
+BEGIN
+    open details for
+        SELECT PROJID,PROJNAME,TEAMSIZE FROM PROJECT WHERE DOMAIN LIKE DOMAININITCHARS;
+
+  RETURN details;
+END FX_FETCH_PROJECTS_BY_DOMAIN; -->	

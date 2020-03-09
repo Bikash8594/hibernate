@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping >
+    <class name="com.nt.entity.Manifacturer"     table="MANIFACTURER">
+        <id name="mid" type="int">
+            <column name="MID"/>
+            <generator class="increment"/>
+        </id>
+        <property  name="mname" type="string" >
+            <column length="15" name="MNAME"/>
+        </property>
+        <property  name="location" type="string">
+            <column length="10"  name="LOCATION"/>
+        </property>
+        <property  name="gstNo"  type="long">
+            <column length="10" name="GSTNO"/>
+        </property>
+               
+        
+    </class>
+</hibernate-mapping>

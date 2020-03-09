@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+ <hibernate-mapping>
+     <class  name="com.nt.entity.Employee" table="EMPLOYEE" >
+           <id name="eid"   column="EID" type="int" length="6">  <!-- Singular Id Field      -->
+              <generator class="increment"/>
+           </id>
+           <property name="ename"  column="ENAME" length="10" type="string" />
+           <property name="eadd"  column="EADD"  length="20"  type="string"/>
+           <property name="esalary" column="ESALARY"  scale="10" precision="2"  type="float" />
+            <property name="age" column="PERSON_AGE" length="5"/> 
+     
+     </class>
+ 
+ </hibernate-mapping>	

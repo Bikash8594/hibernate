@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="com.nt.entity.Project"   table="PROJECT">
+        <id name="projId"  column="PROJID"  type="int"  length="10">
+           <generator class="increment"/>
+        </id>
+       <property name="projName"  column="PROJNAME" type="string" length="20"/>
+       <property name="domain"  column="DOMAIN" type="string" length="20"/>
+       <property name="company"  column="COMPANY"  type="string"  length="20"/>
+       <property name="teamSize"  column="TEAMSIZE"  type="int"/>
+  </class>
+   <sql-query name="GET_PROJECTS_BY_TEAM_SIZE_RANGE" >
+      <return class="com.nt.entity.Project" />
+       <![CDATA[
+             SELECT  PROJID,PROJNAME,DOMAIN,COMPANY,TEAMSIZE  FROM  PROJECT WHERE TEAMSIZE>=:min AND TEAMSIZE<=:max
+             ]]>
+   </sql-query>
+   <sql-query name="STREAMLINE_TEAMSIZE">
+          UPDATE PROJECT SET TEAMSIZE=TEAMSIZE-:correction WHERE TEAMSIZE>=:size
+   </sql-query>
+   <sql-query name="GET_PROJECTS_INFO_BY_DOMAIN_NAME">
+          <return-scalar column="PROJNAME"  type="string"/>
+          <return-scalar column="TEAMSIZE"  type="int"/>
+          SELECT PROJNAME,TEAMSIZE FROM PROJECT WHERE DOMAIN LIKE :dmn
+   </sql-query>
+</hibernate-mapping>	

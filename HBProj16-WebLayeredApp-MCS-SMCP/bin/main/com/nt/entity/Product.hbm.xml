@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping >
+    <class name="com.nt.entity.Product"     table="PRODUCT">
+        <id name="pid" type="int">
+            <column name="PID"/>
+            <generator class="increment"/>
+        </id>
+        <property  name="pname" type="string" >
+            <column length="20" name="PNAME"/>
+        </property>
+        <property  name="price" type="float">
+            <column length="10" precision="2" name="PRICE"/>
+        </property>
+        <property  name="qty"  type="float">
+            <column length="10" name="QTY"/>
+        </property>
+        <property  name="status"  type="boolean">
+            <column length="1" name="STATUS"/>
+        </property>
+        <property  name="mid"  type="int">
+            <column length="5" name="MID"/>
+        </property>
+        
+        
+        
+    </class>
+</hibernate-mapping>

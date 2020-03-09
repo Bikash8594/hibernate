@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="com.nt.entity.Product"   table="PRODUCT">
+       <!-- <id name="pid" column="PID"  type="int" length="10"   >
+           <generator class="assigned"/> 
+            <generator class="org.hibernate.id.Assigned"/>  
+       </id> -->
+       <!-- <id name="pid" column="PID"  type="int" length="10" >
+             <generator class="increment"/>
+       </id> -->
+      <!--  <id name="pid" column="PID"  type="int" length="10" >
+             <generator class="identity"/>
+       </id> -->
+         <!-- <id name="pid" column="PID"  type="int" length="10" >
+             <generator class="sequence"/>
+       </id> -->
+       
+     <!--    <id name="pid" column="PID"  type="int" length="10" >
+             <generator class="sequence">
+                   <param name="sequence_name">PROD_SEQ</param>
+             </generator>
+       </id> -->
+       <!--  <id name="pid"  column="PID"  type="int" length="10">
+             <generator class="hilo">
+                     <param name="table">HI_TABLE</param>
+                     <param name="column">HI_COL</param>
+                     <param name="max_lo">5</param>
+             </generator>
+        </id> -->
+        
+      <!--   <id name="pid"  column="PID"  type="int" length="10">
+             <generator class="hilo">
+                     <param name="max_lo">5</param>
+             </generator>
+        </id> -->
+        
+      <!--      <id name="pid"  column="PID"  type="int" length="10">
+             <generator class="hilo"/>
+        </id>  -->
+        
+      <!--     <id name="pid"  column="PID"  type="int" length="10">
+             <generator class="hilo">
+                     <param name="table">HI_TABLE</param>
+                     <param name="column">HI_COL</param>
+                     <param name="max_lo">5</param>
+             </generator>
+        </id>  -->
+        
+      <!--        <id name="pid"  column="PID"  type="int" length="10">
+             <generator class="native"/>
+        </id> -->
+        
+        <id name="pid"  column="PID"  type="int"  length="10">
+             <generator class="select">
+                 <param name="key">pname</param>
+             </generator>
+        </id>
+         
+         <!-- CREATE OR REPLACE TRIGGER prod_before_insert
+BEFORE INSERT
+   ON product
+   FOR EACH ROW
+DECLARE
+   prodId number(5);
+BEGIN
+      -- Get sequence generated vlaues
+       select  pid_seq.nextVal into prodId  from dual;
+      -- assign  sequence generated value as pid
+   :new.pid := prodId;
+END;
+/ -->
+         
+       <property name="pname"  column="PNAME" type="string" length="20"/>
+       <property name="price"  column="PRICE" type="float" length="10" precision="2"/>
+       <property name="qty"  column="QTY"  type="float"  length="10"  precision="2"/>
+       <property name="status"  column="STATUS"  type="boolean"/>
+       
+  </class>
+
+</hibernate-mapping>	

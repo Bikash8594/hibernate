@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+ <hibernate-mapping>
+     <class  name="com.nt.entity.Employee" table="EMPLOYEE"  dynamic-insert="true">
+           <id name="eid"   column="EID">  <!-- Singular Id Field      -->
+              <generator class="increment"/>
+           </id>
+           <property name="ename"  column="ENAME"/>
+           <property name="eadd"  column="EADD"/>
+           <property name="esalary" column="ESALARY"/>
+     
+     </class>
+ 
+ </hibernate-mapping>	
